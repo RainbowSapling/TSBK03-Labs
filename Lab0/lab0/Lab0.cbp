@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="Lab0" />
+		<Option makefile="makefile" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/Lab0" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/Lab0" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+		</Compiler>
+		<Unit filename="../common/GL_utilities.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../common/GL_utilities.h" />
+		<Unit filename="../common/GL_utilities.h.gch" />
+		<Unit filename="../common/LittleOBJLoader.h" />
+		<Unit filename="../common/LittleOBJLoader.h.gch" />
+		<Unit filename="../common/LoadTGA.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../common/LoadTGA.h" />
+		<Unit filename="../common/LoadTGA.h.gch" />
+		<Unit filename="../common/VectorUtils4.h" />
+		<Unit filename="../common/VectorUtils4.h.gch" />
+		<Unit filename="../common/Windows/MicroGlut.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../common/Windows/MicroGlut.h" />
+		<Unit filename="../common/Windows/MicroGlut.h.gch" />
+		<Unit filename="../common/Windows/glew.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../common/Windows/glew.h" />
+		<Unit filename="../common/Windows/glew.h.gch" />
+		<Unit filename="../common/Windows/wglew.h" />
+		<Unit filename="Lab0.depend" />
+		<Unit filename="Lab0.layout" />
+		<Unit filename="lab0.cpp" />
+		<Unit filename="lab0.frag" />
+		<Unit filename="lab0.vert" />
+		<Unit filename="makefile" />
+		<Unit filename="obj/Debug/common/GL_utilities.o" />
+		<Unit filename="obj/Debug/common/LoadTGA.o" />
+		<Unit filename="obj/Debug/common/Windows/MicroGlut.o" />
+		<Unit filename="obj/Debug/common/Windows/glew.o" />
+		<Unit filename="obj/Debug/lab0/lab0.o" />
+		<Unit filename="objects/bilskiss.obj" />
+		<Unit filename="objects/bunnyplus.obj" />
+		<Unit filename="objects/cubeplus.obj" />
+		<Unit filename="objects/stanford-bunny.obj" />
+		<Unit filename="objects/teapot.obj" />
+		<Unit filename="objects/teddy.obj" />
+		<Unit filename="textures/bilskissred.tga" />
+		<Unit filename="textures/conc.tga" />
+		<Unit filename="textures/dirt.tga" />
+		<Unit filename="textures/grass.tga" />
+		<Unit filename="textures/maskros512.tga" />
+		<Extensions>
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

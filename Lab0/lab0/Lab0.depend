@@ -1,0 +1,137 @@
+# depslib dependency file v1.0
+1756839673 source:d:\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab0\common\windows\glew.c
+	"glew.h"
+	"wglew.h"
+	<GL/glxew.h>
+	<stddef.h>
+	<dlfcn.h>
+	<stdio.h>
+	<stdlib.h>
+	<stdlib.h>
+	<string.h>
+	<AvailabilityMacros.h>
+	<dlfcn.h>
+	<mach-o/dyld.h>
+
+1756839673 d:\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab0\common\windows\glew.h
+	<stddef.h>
+	<inttypes.h>
+	<stdint.h>
+	<inttypes.h>
+	<Availability.h>
+	<OpenGL/glu.h>
+	<GL/glu.h>
+
+1756839673 d:\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab0\common\windows\wglew.h
+	<windows.h>
+
+1756839673 source:d:\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab0\common\windows\microglut.c
+	<windows.h>
+	"glew.h"
+	<gl/gl.h>
+	"MicroGlut.h"
+	<stdio.h>
+	<io.h>
+	<fcntl.h>
+
+1756839673 d:\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab0\common\windows\microglut.h
+
+1756842685 source:d:\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab0\common\gl_utilities.c
+	<Windows.h>
+	<stdlib.h>
+	<stdio.h>
+	<stddef.h>
+	<string.h>
+	"GL_utilities.h"
+
+1756839673 d:\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab0\common\gl_utilities.h
+	<OpenGL/gl3.h>
+	"glew.h"
+	<GL/gl.h>
+	<GL/gl.h>
+	<stdlib.h>
+
+1756842731 source:d:\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab0\common\loadtga.c
+	"LoadTGA.h"
+
+1756839673 d:\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab0\common\loadtga.h
+	<OpenGL/gl3.h>
+	"glew.h"
+	<GL/gl.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1723621927 source:d:\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab0\lab0\lab0.cpp
+	"MicroGlut.h"
+	"GL_utilities.h"
+	"VectorUtils4.h"
+	"LittleOBJLoader.h"
+	"LoadTGA.h"
+
+1567627866 source:d:\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab0\lab0\lab0.frag
+
+1567628082 source:d:\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab0\lab0\lab0.vert
+
+1756839673 source:d:\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab0\common\gl_utilities.h
+	<OpenGL/gl3.h>
+	"glew.h"
+	<GL/gl.h>
+	<GL/gl.h>
+	<stdlib.h>
+
+1756839673 source:d:\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab0\common\littleobjloader.h
+	<OpenGL/gl3.h>
+	"glew.h"
+	<GL/gl.h>
+	"VectorUtils4.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<math.h>
+	"VectorUtils4.h"
+
+1756839673 d:\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab0\common\vectorutils4.h
+	<OpenGL/gl3.h>
+	"glew.h"
+	<GL/gl.h>
+	<math.h>
+	<stdio.h>
+
+1756839673 source:d:\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab0\common\loadtga.h
+	<OpenGL/gl3.h>
+	"glew.h"
+	<GL/gl.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1756839673 d:\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab0\common\littleobjloader.h
+	<OpenGL/gl3.h>
+	"glew.h"
+	<GL/gl.h>
+	"VectorUtils4.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<math.h>
+	"VectorUtils4.h"
+
+1756839673 source:d:\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab0\common\vectorutils4.h
+	<OpenGL/gl3.h>
+	"glew.h"
+	<GL/gl.h>
+	<math.h>
+	<stdio.h>
+
+1756839673 source:d:\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab0\common\windows\glew.h
+	<stddef.h>
+	<inttypes.h>
+	<stdint.h>
+	<inttypes.h>
+	<Availability.h>
+	<OpenGL/glu.h>
+	<GL/glu.h>
+
+1756839673 source:d:\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab0\common\windows\microglut.h
+
