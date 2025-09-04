@@ -62,16 +62,16 @@
 	<stdlib.h>
 	<string.h>
 
-1723621927 source:d:\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab0\lab0\lab0.cpp
+1756999078 source:d:\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab0\lab0\lab0.cpp
 	"MicroGlut.h"
 	"GL_utilities.h"
 	"VectorUtils4.h"
 	"LittleOBJLoader.h"
 	"LoadTGA.h"
 
-1567627866 source:d:\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab0\lab0\lab0.frag
+1756998735 source:d:\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab0\lab0\lab0.frag
 
-1567628082 source:d:\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab0\lab0\lab0.vert
+1756998659 source:d:\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab0\lab0\lab0.vert
 
 1756839673 source:d:\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab0\common\gl_utilities.h
 	<OpenGL/gl3.h>
@@ -134,4 +134,8 @@
 	<GL/glu.h>
 
 1756839673 source:d:\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab0\common\windows\microglut.h
+
+1756999079 source:d:\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab0\lab0\lab0.depend
+
+1756931709 source:d:\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab0\lab0\lab0.layout
 

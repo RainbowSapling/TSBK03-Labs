@@ -35,6 +35,8 @@ void init(void)
 	dumpInfo();
 
 	// GL inits
+
+	//Background color
 	glClearColor(0.2,0.2,0.5,0);
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_CULL_FACE);
@@ -47,9 +49,9 @@ void init(void)
 	// Load and compile shader
 	program = loadShaders("lab0.vert", "lab0.frag");
 	printError("init shader");
-	
+
 	// Upload geometry to the GPU:
-	bunny = LoadModel("objects/stanford-bunny.obj");
+	bunny = LoadModel("objects/bunnyplus.obj");
 	printError("load models");
 
 	// Load textures
@@ -71,11 +73,19 @@ void display(void)
 	mat4 modelToWorldToView = worldToView * modelToWorld; // Combine to one matrix
 	glUniformMatrix4fv(glGetUniformLocation(program, "modelToWorldToView"), 1, GL_TRUE, modelToWorldToView.m);
 
+	//texture
+	glUniform1i(glGetUniformLocation(program,"exampletexture"),0);//the last argument has to be the same as the texture-unit that is to be used
+    glActiveTexture(GL_TEXTURE0);//which texture-unit is active
+    glBindTexture(GL_TEXTURE_2D, texture);//load the texture to active texture-unit
+
+	//time
+	glUniform1f(glGetUniformLocation(program, "time"), glutGet(GLUT_ELAPSED_TIME) / 200);
+
 	//draw the model
-	DrawModel(bunny, program, "in_Position", "in_Normal", NULL);
-	
+	DrawModel(bunny, program, "in_Position", "in_Normal", "in_TexCoord");
+
 	printError("display");
-	
+
 	glutSwapBuffers();
 }
 
@@ -86,8 +96,8 @@ int main(int argc, char *argv[])
 	glutInitContextVersion(3, 2);
 	glutInitWindowSize(800, 800);
 	glutCreateWindow ("Lab 0 - OpenGL Introduction");
-	glutDisplayFunc(display); 
-	glutRepeatingTimer(20);
+	glutDisplayFunc(display);
+	glutRepeatingTimer(1);
 	init ();
 	glutMainLoop();
 	exit(0);
