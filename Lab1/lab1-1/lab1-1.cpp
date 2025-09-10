@@ -44,7 +44,7 @@ Model* squareModel;
 //----------------------Globals-------------------------------------------------
 Model *model1;
 FBOstruct *fbo1, *fbo2;
-GLuint phongshader = 0, plaintextureshader = 0;
+GLuint phongshader = 0, plaintextureshader = 0, lpshader = 0, trunkshader = 0;
 
 //-------------------------------------------------------------------------------------
 
@@ -62,6 +62,8 @@ void init(void)
 	// Load and compile shaders
 	plaintextureshader = loadShaders("plaintextureshader.vert", "plaintextureshader.frag");  // puts texture on teapot
 	phongshader = loadShaders("phong.vert", "phong.frag");  // renders with light (used for initial renderin of teapot)
+	lpshader = loadShaders("lowpass.vert", "lowpass.frag");
+	trunkshader = loadShaders("trunk.vert", "trunk.frag");
 
 	printError("init shader");
 
@@ -86,7 +88,7 @@ void init(void)
 void display(void)
 {
 	mat4 vm2;
-	
+
 	// This function is called whenever it is time to render
 	//  a new frame; due to the idle()-function below, this
 	//  function will get called several times per second
@@ -117,11 +119,25 @@ void display(void)
 	glCullFace(GL_BACK);
 
 	DrawModel(model1, phongshader, "in_Position", "in_Normal", NULL);
+	glDisable(GL_CULL_FACE);
+	glDisable(GL_DEPTH_TEST);
 
 	// Done rendering the FBO! Set up for rendering on screen, using the result as texture!
 
+	//Trunkating
+	//glUseProgram(trunkshader);
+	//useFBO(fbo2, fbo1, 0L);
+	//DrawModel(squareModel, trunkshader, "in_Position", NULL, "in_TexCoord");
+
+
+	//lowpass filtering
+	glUseProgram(lpshader);
+	useFBO(fbo2, fbo1, 0L);
+	DrawModel(squareModel, lpshader, "in_Position", NULL, "in_TexCoord");
+
+
 //	glFlush(); // Can cause flickering on some systems. Can also be necessary to make drawing complete.
-	useFBO(0L, fbo1, 0L);
+	useFBO(0L, fbo2, 0L);
 	glClearColor(0.0, 0.0, 0.0, 0);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -159,9 +175,9 @@ void mouseDragged(int x, int y)
 {
 	vec3 p;
 	mat4 m;
-	
+
 	// This is a simple and IMHO really nice trackball system:
-	
+
 	// Use the movement direction to create an orthogonal rotation axis
 
 	p.y = x - prevx;
@@ -171,12 +187,12 @@ void mouseDragged(int x, int y)
 	// Create a rotation around this axis and premultiply it on the model-to-world matrix
 	// Limited to fixed camera! Will be wrong if the camera is moved!
 
-	m = ArbRotate(p, sqrt(p.x*p.x + p.y*p.y) / 50.0); // Rotation in view coordinates	
+	m = ArbRotate(p, sqrt(p.x*p.x + p.y*p.y) / 50.0); // Rotation in view coordinates
 	modelToWorldMatrix = Mult(m, modelToWorldMatrix);
-	
+
 	prevx = x;
 	prevy = y;
-	
+
 	glutPostRedisplay();
 }
 
