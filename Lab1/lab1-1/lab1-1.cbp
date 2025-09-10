@@ -66,7 +66,19 @@
 		</Unit>
 		<Unit filename="../common/Windows/glew.h" />
 		<Unit filename="../common/Windows/wglew.h" />
+		<Unit filename="combine.frag">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="combine.vert">
+			<Option compile="1" />
+		</Unit>
 		<Unit filename="lab1-1.cpp" />
+		<Unit filename="lowpass.frag">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="lowpass.vert">
+			<Option compile="1" />
+		</Unit>
 		<Unit filename="makefile">
 			<Option compile="1" />
 		</Unit>
@@ -86,6 +98,12 @@
 			<Option compile="1" />
 		</Unit>
 		<Unit filename="teapot.obj">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="trunk.frag">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="trunk.vert">
 			<Option compile="1" />
 		</Unit>
 		<Extensions>

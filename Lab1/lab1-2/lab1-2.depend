@@ -48,3 +48,82 @@
 	<math.h>
 	<stdio.h>
 
+1675157878 source:d:\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab1\common\gl_utilities.c
+	<Windows.h>
+	<stdlib.h>
+	<stdio.h>
+	<stddef.h>
+	<string.h>
+	"GL_utilities.h"
+
+1601082610 d:\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab1\common\gl_utilities.h
+	<OpenGL/gl3.h>
+	"glew.h"
+	<GL/gl.h>
+	<GL/gl.h>
+	<stdlib.h>
+
+1713339770 source:d:\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab1\common\loadtga.c
+	"LoadTGA.h"
+
+1668940094 d:\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab1\common\loadtga.h
+	<OpenGL/gl3.h>
+	"glew.h"
+	<GL/gl.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1504151932 source:d:\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab1\common\windows\glew.c
+	"glew.h"
+	"wglew.h"
+	<GL/glxew.h>
+	<stddef.h>
+	<dlfcn.h>
+	<stdio.h>
+	<stdlib.h>
+	<stdlib.h>
+	<string.h>
+	<AvailabilityMacros.h>
+	<dlfcn.h>
+	<mach-o/dyld.h>
+
+1504151932 d:\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab1\common\windows\wglew.h
+	<windows.h>
+
+1713525027 source:d:\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab1\common\windows\microglut.c
+	<windows.h>
+	"glew.h"
+	<gl/gl.h>
+	"MicroGlut.h"
+	<stdio.h>
+	<io.h>
+	<fcntl.h>
+
+1713525814 d:\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab1\common\windows\microglut.h
+
+1723622212 source:d:\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab1\lab1-2\lab1-2.cpp
+	<stdio.h>
+	<math.h>
+	<stdlib.h>
+	"MicroGlut.h"
+	"VectorUtils4.h"
+	"GL_utilities.h"
+	"LittleOBJLoader.h"
+	"LoadTGA.h"
+
+1713346454 d:\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab1\common\littleobjloader.h
+	<OpenGL/gl3.h>
+	"glew.h"
+	<GL/gl.h>
+	"VectorUtils4.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<math.h>
+	"VectorUtils4.h"
+
+1662546234 source:d:\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab1\lab1-2\lab1-2.frag
+
+1347878868 source:d:\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab1\lab1-2\lab1-2.vert
+
