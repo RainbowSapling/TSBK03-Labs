@@ -43,8 +43,8 @@ Model* squareModel;
 
 //----------------------Globals-------------------------------------------------
 Model *model1;
-FBOstruct *fbo1, *fbo2;
-GLuint phongshader = 0, plaintextureshader = 0, lpshader = 0, trunkshader = 0;
+FBOstruct *fbo1, *fbo2, *fbo3, *fboOut;
+GLuint phongshader = 0, plaintextureshader = 0, lpshader = 0, trunkshader = 0, combineshader = 0;
 
 //-------------------------------------------------------------------------------------
 
@@ -62,13 +62,16 @@ void init(void)
 	// Load and compile shaders
 	plaintextureshader = loadShaders("plaintextureshader.vert", "plaintextureshader.frag");  // puts texture on teapot
 	phongshader = loadShaders("phong.vert", "phong.frag");  // renders with light (used for initial renderin of teapot)
-	lpshader = loadShaders("lowpass.vert", "lowpass.frag");
-	trunkshader = loadShaders("trunk.vert", "trunk.frag");
+	lpshader = loadShaders("lowpass.vert", "lowpass.frag"); // Shader for lowpass filtering
+	trunkshader = loadShaders("trunk.vert", "trunk.frag"); // Shader for trunkating
+	combineshader = loadShaders("combine.vert", "combine.frag");
 
 	printError("init shader");
 
 	fbo1 = initFBO(initWidth, initHeight, 0);
 	fbo2 = initFBO(initWidth, initHeight, 0);
+	fbo3 = initFBO(initWidth, initHeight, 0);
+	fboOut = initFBO(initWidth, initHeight, 0);
 
 	// load the model
 	model1 = LoadModel("stanford-bunny.obj");
@@ -125,19 +128,39 @@ void display(void)
 	// Done rendering the FBO! Set up for rendering on screen, using the result as texture!
 
 	//Trunkating
-	//glUseProgram(trunkshader);
-	//useFBO(fbo2, fbo1, 0L);
-	//DrawModel(squareModel, trunkshader, "in_Position", NULL, "in_TexCoord");
+	glUseProgram(trunkshader);
+
+	//Take the original scene stored in fbo1, trunkate the values and store them in fbo2
+	useFBO(fbo2, fbo1, 0L);
+	DrawModel(squareModel, trunkshader, "in_Position", NULL, "in_TexCoord");
 
 
 	//lowpass filtering
-	glUseProgram(lpshader);
-	useFBO(fbo2, fbo1, 0L);
-	DrawModel(squareModel, lpshader, "in_Position", NULL, "in_TexCoord");
 
+	//Number of times the lowpass filter is applied
+	int loops = 20;
+
+	//Ping ponging
+	for(int i = 0; i < loops; i++){
+        glUseProgram(lpshader);
+
+        //Take the texture stored in fbo2, apply the filter, and store in fbo3
+        useFBO(fbo3, fbo2, 0L);
+        DrawModel(squareModel, lpshader, "in_Position", NULL, "in_TexCoord");
+
+        //Take the texture stored in fbo1, apply the filter, and store in fbo2
+        useFBO(fbo2, fbo3, 0L);
+        DrawModel(squareModel, lpshader, "in_Position", NULL, "in_TexCoord");
+	}
+
+    //Combining the Bloom with the original scene
+    glUseProgram(combineshader);
+    glUniform1i(glGetUniformLocation(combineshader, "texUnit2"), 1);
+    useFBO(fboOut, fbo1, fbo2);
+    DrawModel(squareModel, combineshader, "in_Position", NULL, "in_TexCoord");
 
 //	glFlush(); // Can cause flickering on some systems. Can also be necessary to make drawing complete.
-	useFBO(0L, fbo2, 0L);
+	useFBO(0L, fboOut, 0L);
 	glClearColor(0.0, 0.0, 0.0, 0);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
