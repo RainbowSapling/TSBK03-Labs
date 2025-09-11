@@ -37,7 +37,7 @@ void main(void)
 
     vec3 lightTex = light * mvt;
 
-	vec3 normalTex = normalize(vec3(-bs.x,-bt.x,1.0));
+	vec3 normalTex = normalize(vec3(-bs.x*10,-bt.x*10,1.0));
     //out_Color = vec4( max(0.0, dot(normalView, light))+0.4) * texture(texUnit, outTexCoord);
     //out_Color = vec4( max(0.0, dot(normalView, light))+0.4);
     out_Color = vec4( max(0.0, dot(normalTex, lightTex))+0.4);
