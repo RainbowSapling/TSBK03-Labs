@@ -138,7 +138,7 @@ void display(void)
 	//lowpass filtering
 
 	//Number of times the lowpass filter is applied
-	int loops = 20;
+	int loops = 100;
 
 	//Ping ponging
 	for(int i = 0; i < loops; i++){
