@@ -82,17 +82,17 @@ void initBoneWeights(void)
 					boneWeight = 0;
 				boneWeights[bone] = boneWeight;
 				totalBoneWeight += boneWeight;
-				
+
 				if (maxBoneWeight < boneWeight)
 					maxBoneWeight = boneWeight;
 			}
-			
+
 			g_boneWeightVis[row][corner].x = 0;
 			g_boneWeightVis[row][corner].y = 0;
 			for (bone = 0; bone < kMaxBones; bone++)
 			{
 				g_boneWeights[row][corner][bone] = boneWeights[bone] / totalBoneWeight;
-				
+
 				if (bone & 1) g_boneWeightVis[row][corner].x += g_boneWeights[row][corner][bone]; // Copy data to here to visualize your weights or anything else
 				if ((bone+1) & 1) g_boneWeightVis[row][corner].y += g_boneWeights[row][corner][bone]; // Copy data to here to visualize your weightss
 			}
@@ -116,7 +116,7 @@ void BuildCylinder()
           g_vertsOrg[row][corner].x = (float) row * CYLINDER_SEGMENT_LENGTH;
           g_vertsOrg[row][corner].y = cos(corner * 2*Pi / kMaxCorners);
           g_vertsOrg[row][corner].z = sin(corner * 2*Pi / kMaxCorners);
-          
+
           g_normalsOrg[row][corner].x = 0;
           g_normalsOrg[row][corner].y = cos(corner * 2*Pi / kMaxCorners);
           g_normalsOrg[row][corner].z = sin(corner * 2*Pi / kMaxCorners);
@@ -128,7 +128,7 @@ void BuildCylinder()
       {
 	// Quads built from two triangles
 
-	if (corner < kMaxCorners-1) 
+	if (corner < kMaxCorners-1)
 	  {
 	    cornerIndex = row * kMaxCorners + corner;
 	    g_poly[cornerIndex * 2].v1 = cornerIndex;
@@ -183,7 +183,7 @@ Bone g_bonesRes[kMaxBones]; // For animation, change to animate
 void setupBones(void)
 {
 	int bone;
-	
+
   for (bone = 0; bone < kMaxBones; bone++)
   {
 	g_bones[bone].pos = vec3((float) bone * BONE_LENGTH, 0.0f, 0.0f);
@@ -193,13 +193,46 @@ void setupBones(void)
 
 
 ///////////////////////////////////////////////////////
-//		D E F O R M  C Y L I N D E R 
+//		D E F O R M  C Y L I N D E R
 //
 // Desc:	deform the cylinder mesh according to the skeleton
 void DeformCylinder()
 {
-  int row, corner;
+  int row, corner, bone;
   // Add more variables as needed
+
+  mat4 invM[kMaxBones];
+  mat4 altM[kMaxBones];
+  mat4 invMtemp;
+  mat4 altMtemp;
+
+  for (bone = kMaxBones-1; bone > -1; bone--) {
+    vec3 bone_pos;
+
+    invMtemp = IdentityMatrix();
+    altMtemp = IdentityMatrix();
+
+    for (int i = 0; i < bone; i++){
+        if(bone == 0) {
+            bone_pos = g_bonesRes[bone].pos;
+        }
+        else {
+            bone_pos = VectorSub(g_bones[bone].pos, g_bones[bone-1].pos);
+        }
+
+        mat4 Tbone = T(bone_pos.x, bone_pos.y,bone_pos.z);
+        mat4 RboneRest = g_bones[bone].rot;
+        mat4 RboneAnim = g_bonesRes[bone].rot;
+        mat4 Mbone = Mult(Tbone, RboneRest);
+
+        invMtemp = Mult(invMtemp, inverse(Mbone));
+        altMtemp = Mult(altMtemp, Mult(Mbone, g_bonesRes[bone].rot));
+    }
+
+    invM[bone] = invMtemp;
+    altM[bone] = altMtemp;
+  }
+
 
   // for all vertices
   for (row = 0; row < kMaxRow; row++)
@@ -215,6 +248,17 @@ void DeformCylinder()
       // g_boneWeights
       // g_vertsOrg
       // g_vertsRes
+
+      g_vertsRes[row][corner] = SetVector(0,0,0);
+
+      for (bone = 0; bone < kMaxBones; bone++) {
+
+        mat4 M = Mult(altM[bone],invM[bone]);
+        vec3 v = ScalarMult(MultVec3(M,g_vertsOrg[row][corner]), g_boneWeights[row][corner][bone]);
+
+        g_vertsRes[row][corner] += v;
+
+      }
     }
   }
 }
@@ -234,7 +278,7 @@ void animateBones(void)
 	// How much to rotate?
 	float angle = sin(time * 3.f) / 2.0f;
 
-	memcpy(&g_bonesRes, &g_bones, kMaxBones*sizeof(Bone)); 
+	memcpy(&g_bonesRes, &g_bones, kMaxBones*sizeof(Bone));
 
 	g_bonesRes[0].rot = Rz(angle * angleScales[0]);
 
@@ -271,9 +315,9 @@ void DrawCylinder()
   // ---------=========  UPG 2 (extra) ===========---------
   // Move the vertex calculations from DeformCylinder into a vertex shader.
   // The current one is "shader.vert"
-	
+
   DeformCylinder();
-	
+
   setBoneLocation();
   setBoneRotation();
 
@@ -281,7 +325,7 @@ void DrawCylinder()
 	glBindVertexArray(cylinderModel->vao);
 	glBindBuffer(GL_ARRAY_BUFFER, cylinderModel->vb);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vec3)*kMaxRow*kMaxCorners, g_vertsRes, GL_DYNAMIC_DRAW);
-	
+
 	DrawModel(cylinderModel, g_shader, "in_Position", "in_Normal", "in_TexCoord");
 }
 
@@ -289,7 +333,7 @@ void DrawCylinder()
 void DisplayWindow()
 {
 	mat4 m;
-	
+
     glClearColor(0.5, 0.5, 0.9, 1);
     glClear(GL_COLOR_BUFFER_BIT+GL_DEPTH_BUFFER_BIT);
 
@@ -316,7 +360,7 @@ void reshape(GLsizei w, GLsizei h)
     GLfloat ratio = (GLfloat) w / (GLfloat) h;
     projectionMatrix = perspective(90, ratio, 0.1, 1000);
 	modelViewMatrix = lookAt(cam.x, cam.y, cam.z,
-											look.x, look.y, look.z, 
+											look.x, look.y, look.z,
 											0,1,0);
 }
 
@@ -334,7 +378,7 @@ int main(int argc, char **argv)
 
   glutDisplayFunc(DisplayWindow);
   glutRepeatingTimer(50);
-  glutKeyboardFunc( keyboardFunc ); 
+  glutKeyboardFunc( keyboardFunc );
   glutReshapeFunc(reshape);
 
   // Set up depth buffer
