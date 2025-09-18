@@ -31,7 +31,7 @@ void main(void)
 	mat4 altMbone2 = Mbone2*Rbone2;
 	mat4 M2 = altMbone1*altMbone2*invMbone2*invMbone1;
 
-	vec3 newPos = vec3(in_TexCoord.y * M1 * vec4(in_Position,1.0) + in_TexCoord.x * M2 * vec4(in_Position,1.0));
+	vec3 newPos = vec3(in_TexCoord.x * M1 * vec4(in_Position,1.0) + in_TexCoord.y * M2 * vec4(in_Position,1.0));
 
 	// transformera resultatet med ModelView- och Projection-matriserna
 	//gl_Position = matrix * vec4(in_Position, 1.0);
