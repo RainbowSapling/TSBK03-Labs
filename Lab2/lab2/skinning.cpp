@@ -46,8 +46,8 @@ vec3 g_normalsRes[kMaxRow][kMaxCorners];
 vec3 g_boneWeights[kMaxRow][kMaxCorners];
 
 //float weight[kMaxRow] = {0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0};
-//float weight[kMaxRow] = {0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9};
-float weight[kMaxRow] = {0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1, 0.0};
+float weight[kMaxRow] = {0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9};
+//float weight[kMaxRow] = {0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1, 0.0};
 
 Model *cylinderModel; // Collects all the above for drawing with glDrawElements
 
@@ -230,8 +230,8 @@ void DeformCylinder()
 			// g_vertsOrg are original vertex data.
 			// g_vertsRes are modified vertex data to send to OpenGL.
 
-//			vec3 v = VectorAdd(ScalarMult(MultVec3(M1,g_vertsOrg[row][corner]),weight[row]),
-//                      ScalarMult(MultVec3(M2,g_vertsOrg[row][corner]),1-weight[row]));
+//			vec3 v = VectorAdd(ScalarMult(MultVec3(M1,g_vertsOrg[row][corner]),1-weight[row]),
+//                      ScalarMult(MultVec3(M2,g_vertsOrg[row][corner]),weight[row]));
 //
 //            g_vertsRes[row][corner] = v;
 

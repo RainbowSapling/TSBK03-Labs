@@ -273,6 +273,7 @@ void animateBones(void)
 	int bone;
 	// How much for each joint? Feel free to edit.
 	float angleScales[10] = { 1.f, 1.f, 1.f, 1.f, 1.f, 1.f, 1.f, 1.f, 1.f, 1.f };
+	//float angleScales[10] = { 1.f, -1.f, 1.f, -1.f, 1.f, -1.f, 1.f, -1.f, 1.f, -1.f };
 
 	float time = glutGet(GLUT_ELAPSED_TIME) / 1000.0;
 	// How much to rotate?
