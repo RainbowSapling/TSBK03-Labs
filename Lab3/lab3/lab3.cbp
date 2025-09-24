@@ -31,7 +31,111 @@
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
+			<Add directory="../common" />
+			<Add directory="../common/Windows" />
 		</Compiler>
+		<Linker>
+			<Add library="opengl32" />
+			<Add library="glu32" />
+			<Add library="gdi32" />
+		</Linker>
+		<Unit filename="../common/GL_utilities.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../common/GL_utilities.h">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="../common/LittleOBJLoader.h">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="../common/LoadTGA.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../common/LoadTGA.h">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="../common/VectorUtils4.h">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="../common/Windows/MicroGlut.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../common/Windows/MicroGlut.h" />
+		<Unit filename="../common/Windows/glew.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../common/Windows/glew.h" />
+		<Unit filename="../common/Windows/wglew.h" />
+		<Unit filename="balls/0.tga">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="balls/1.tga">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="balls/10.tga">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="balls/11.tga">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="balls/12.tga">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="balls/13.tga">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="balls/14.tga">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="balls/15.tga">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="balls/2.tga">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="balls/3.tga">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="balls/4.tga">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="balls/5.tga">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="balls/6.tga">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="balls/7.tga">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="balls/8.tga">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="balls/9.tga">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="lab3.cpp" />
+		<Unit filename="lab3.frag">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="lab3.vert">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="makefile">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="sphere.obj">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="surface.tga">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="tableandlegsnosurf.obj">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="tablesurf.obj">
+			<Option compile="1" />
+		</Unit>
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>

@@ -16,6 +16,7 @@
 #include "LoadTGA.h"
 // uses framework Cocoa
 // uses framework OpenGL
+#include <iostream>
 
 // initial width and heights
 const int initWidth=800, initHeight=800;
@@ -149,16 +150,21 @@ void updateWorld()
 	}
 
 	// Detect collisions, calculate speed differences, apply forces (uppgift 2)
-	for (i = 0; i < kNumBalls; i++)
+	for (i = 0; i < kNumBalls; i++) {
         for (j = i+1; j < kNumBalls; j++)
         {
             // YOUR CODE HERE
+
         }
+	}
 
 	// Control rotation here to movement only, no friction (uppgift 1)
 	for (i = 0; i < kNumBalls; i++)
 	{
 		// YOUR CODE HERE
+		vec3 rotAxis = cross(vec3(0.0, 1.0, 0.0), ball[i].P);
+		float angle = Norm(ball[i].v);
+		ball[i].R = Mult(ArbRotate(rotAxis,angle), ball[i].R);
 	}
 
 	// Control rotation here to reflect
@@ -318,8 +324,10 @@ void display(void)
 
     renderTable();
 
-	for (i = 0; i < kNumBalls; i++)
+	for (i = 0; i < kNumBalls; i++){ // ------------ Missing {} ??
         renderBall(i);
+	}
+
 
     printError("rendering");
 

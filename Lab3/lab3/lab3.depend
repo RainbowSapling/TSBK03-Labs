@@ -7,7 +7,7 @@
 	<string.h>
 	"GL_utilities.h"
 
-1601082610 d:\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab3\common\gl_utilities.h
+1758725196 d:\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab3\common\gl_utilities.h
 	<OpenGL/gl3.h>
 	"glew.h"
 	<GL/gl.h>
@@ -23,7 +23,7 @@
 	<OpenGL/glu.h>
 	<GL/glu.h>
 
-1601082610 source:d:\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab3\common\gl_utilities.h
+1758725196 source:d:\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab3\common\gl_utilities.h
 	<OpenGL/gl3.h>
 	"glew.h"
 	<GL/gl.h>
@@ -102,7 +102,11 @@
 
 1713525814 d:\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab3\common\windows\microglut.h
 
-1723622959 source:d:\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab3\lab3\lab3.cpp
+1661694620 source:d:\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab3\lab3\lab3.frag
+
+1630516940 source:d:\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab3\lab3\lab3.vert
+
+1758729849 source:d:\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab3\lab3\lab3.cpp
 	<stdio.h>
 	<math.h>
 	<stdlib.h>
@@ -111,6 +115,7 @@
 	"GL_utilities.h"
 	"LittleOBJLoader.h"
 	"LoadTGA.h"
+	<iostream>
 
 1713346454 d:\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab3\common\littleobjloader.h
 	<OpenGL/gl3.h>
@@ -122,8 +127,4 @@
 	<string.h>
 	<math.h>
 	"VectorUtils4.h"
-
-1661694620 source:d:\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab3\lab3\lab3.frag
-
-1630516940 source:d:\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab3\lab3\lab3.vert
 
