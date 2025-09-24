@@ -70,7 +70,7 @@ Material ballMt = { { 1.0, 1.0, 1.0, 1.0 }, { 1.0, 1.0, 1.0, 0.0 },
                 };
 
 
-enum {kNumBalls = 16}; // Change as desired, max 16
+enum {kNumBalls = 4}; // Change as desired, max 16
 
 //------------------------------Globals---------------------------------
 ModelTexturePair tableAndLegs, tableSurf;
@@ -162,8 +162,8 @@ void updateWorld()
 	for (i = 0; i < kNumBalls; i++)
 	{
 		// YOUR CODE HERE
-		vec3 rotAxis = cross(vec3(0.0, 1.0, 0.0), ball[i].P);
-		float angle = Norm(ball[i].v);
+		vec3 rotAxis = cross(vec3(0.0, 1.0, 0.0), ball[i].P); // P:linear momentum
+		float angle = Norm(ball[i].v)*1000000;
 		ball[i].R = Mult(ArbRotate(rotAxis,angle), ball[i].R);
 	}
 
@@ -279,18 +279,19 @@ void init()
 	for (i = 0; i < kNumBalls; i++)
 	{
 		ball[i].mass = 1.0;
-		ball[i].X = vec3(0.0, 0.0, 0.0);
-		ball[i].P = vec3(((float)(i % 13))/ 50.0, 0.0, ((float)(i % 15))/50.0);
+		ball[i].X = vec3(0.0, 0.0, i/10);
+		ball[i].P = vec3(((float)(i % 13))/ 5000000.0, 0.0, ((float)(i % 15))/5000000.0);
 		ball[i].R = IdentityMatrix();
+		std::cout << ((float)(i % 13))/ 50000.0 << "\n";
 	}
-	ball[0].X = vec3(0, 0, 0);
-	ball[1].X = vec3(0, 0, 0.5);
-	ball[2].X = vec3(0.0, 0, 1.0);
-	ball[3].X = vec3(0, 0, 1.5);
-	ball[0].P = vec3(0, 0, 0);
-	ball[1].P = vec3(0, 0, 0);
-	ball[2].P = vec3(0, 0, 0);
-	ball[3].P = vec3(0, 0, 1.00);
+//	ball[0].X = vec3(0, 0, 0);
+//	ball[1].X = vec3(0, 0, 0.5);
+//	ball[2].X = vec3(0.0, 0, 1.0);
+//	ball[3].X = vec3(0, 0, 1.5);
+	ball[0].P = vec3(0, 0, 0.0000005);
+//	ball[1].P = vec3(0.0000005, 0, 0);
+//	ball[2].P = vec3(0, 0, 0.0000009);
+//	ball[3].P = vec3(0, 0, 1.00);
 
     cam = vec3(0, 1.2, 2.5);
     point = vec3(0, 0, 1.0);
@@ -300,7 +301,7 @@ void init()
 //-------------------------------callback functions------------------------------------------
 void display(void)
 {
-	deltaT = glutGet(GLUT_ELAPSED_TIME) / 1000.0 - currentTime;
+	deltaT = glutGet(GLUT_ELAPSED_TIME) / 900.0 - currentTime;
 	currentTime = glutGet(GLUT_ELAPSED_TIME) / 1000.0;
 
 	int i;
