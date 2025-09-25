@@ -44,7 +44,7 @@ typedef struct
 
   vec3 F, T; // accumulated force and torque
 
-//  mat4 J, Ji; We could have these but we can live without them for spheres.
+  //mat4 J, Ji;
   vec3 omega; // Angular momentum
   vec3 v; // Change in velocity
 
@@ -149,7 +149,7 @@ void updateWorld()
 			ball[i].P.z = -abs(ball[i].P.z);
 	}
 
-	float elasticity = 1.0;
+	float elasticity = 0.0;
 	// Detect collisions, calculate speed differences, apply forces (uppgift 2)
 	for (i = 0; i < kNumBalls; i++) {
         for (j = i+1; j < kNumBalls; j++)
@@ -161,11 +161,11 @@ void updateWorld()
             normVec.y = 0.0;
             normVec =  normalize(normVec);
 
-//            vec3 vDiff = ball[i].v - ball[j].v;
-//            vec3 posDiff = normalize(ball[j].X - ball[i].X);
+            vec3 v_rel = ball[i].v - ball[j].v;
+            vec3 pos_rel = normalize(ball[i].X - ball[j].X);
+            bool collision_path = dot(v_rel,pos_rel) >= 0;
 
-
-            if (dist < 2.0*kBallSize){ // Collision detection
+            if (dist < 2.0*kBallSize && collision_path){ // Collision detection
 
                 float vRel = dot((ball[i].v - ball[j].v),normVec); // p.156
 
@@ -184,7 +184,7 @@ void updateWorld()
 	{
 		// YOUR CODE HERE
 		vec3 rotAxis = cross(vec3(0.0, 1.0, 0.0), ball[i].P); // P:linear momentum
-		float angle = Norm(ball[i].v)*1000000;
+		float angle = Norm(ball[i].v);
 		ball[i].R = Mult(ArbRotate(rotAxis,angle), ball[i].R);
 	}
 
@@ -203,6 +203,10 @@ void updateWorld()
 
 		// Note: omega is not set. How do you calculate it? (del av uppgift 2)
 		// YOUR CODE HERE
+		// w = L/I
+		//std::cout << (ball[i].L / ((2/5) * ball[i].mass * kBallSize*kBallSize)).x;
+		ball[i].L += ball[i].T;
+		ball[i].omega = (ball[i].L * 5) / (2 * ball[i].mass * kBallSize*kBallSize);
 
 //		v := P * 1/mass
 		ball[i].v = ball[i].P * 1.0/(ball[i].mass);
@@ -300,9 +304,10 @@ void init()
 	for (i = 0; i < kNumBalls; i++)
 	{
 		ball[i].mass = 1.0;
-		ball[i].X = vec3(0.0, 0.0, 0.0);
+		//ball[i].X = vec3(0.0, 0.0, 0.0);
 		//ball[i].X = vec3(0.0, 0.0, 0.0 + i*0.5);
-		ball[i].P = vec3(((float)(i % 13))/ 5000000.0, 0.0, ((float)(i % 15))/5000000.0);
+		ball[i].X = vec3(0.0, 0.0, i/10);
+		ball[i].P = vec3(((float)(i % 13))/ 50.0, 0.0, ((float)(i % 15))/50.0);
 		ball[i].R = IdentityMatrix();
 	}
 	ball[0].X = vec3(0, 0, 0);
@@ -320,7 +325,7 @@ void init()
 	ball[10].X = vec3(-1.5, 0, 1.0);
 	ball[11].X = vec3(-2.0, 0, 1.5);
 
-	ball[0].P = vec3(0, 0, 0.0000005);
+	ball[0].P = vec3(0, 0, 0.5);
 //	ball[1].P = vec3(0, 0, 0);
 //	ball[2].P = vec3(0, 0, 0);
 //	ball[3].P = vec3(0, 0, 0);
@@ -335,7 +340,10 @@ void init()
 //-------------------------------callback functions------------------------------------------
 void display(void)
 {
-	deltaT = glutGet(GLUT_ELAPSED_TIME) / 900.0 - currentTime;
+	deltaT = glutGet(GLUT_ELAPSED_TIME) / 1000.0 - currentTime;
+	if (currentTime == 0){
+        deltaT = 0;
+	}
 	currentTime = glutGet(GLUT_ELAPSED_TIME) / 1000.0;
 
 	int i;
