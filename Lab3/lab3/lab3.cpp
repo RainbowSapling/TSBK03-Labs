@@ -70,7 +70,7 @@ Material ballMt = { { 1.0, 1.0, 1.0, 1.0 }, { 1.0, 1.0, 1.0, 0.0 },
                 };
 
 
-enum {kNumBalls = 4}; // Change as desired, max 16
+enum {kNumBalls = 8}; // Change as desired, max 16
 
 //------------------------------Globals---------------------------------
 ModelTexturePair tableAndLegs, tableSurf;
@@ -149,7 +149,7 @@ void updateWorld()
 			ball[i].P.z = -abs(ball[i].P.z);
 	}
 
-	float elasticity = 0.0;
+	float elasticity = 1.0;
 	// Detect collisions, calculate speed differences, apply forces (uppgift 2)
 	for (i = 0; i < kNumBalls; i++) {
         for (j = i+1; j < kNumBalls; j++)
@@ -159,10 +159,10 @@ void updateWorld()
 
             vec3 normVec = ball[i].X - ball[j].X;
             normVec.y = 0.0;
-            normVec =  normalize(normVec);
+            normVec =  Normalize(normVec);
 
             vec3 v_rel = ball[i].v - ball[j].v;
-            vec3 pos_rel = normalize(ball[i].X - ball[j].X);
+            vec3 pos_rel = normalize(ball[j].X - ball[i].X);
             bool collision_path = dot(v_rel,pos_rel) >= 0;
 
             if (dist < 2.0*kBallSize && collision_path){ // Collision detection
@@ -173,8 +173,8 @@ void updateWorld()
 
                 vec3 impact = jj * normVec;
 
-                ball[i].P = ball[i].P + impact;
-                ball[j].P = ball[i].P - impact;
+                ball[i].F = ball[i].F + impact/deltaT;
+                ball[j].F = ball[j].F - impact/deltaT;
             }
         }
 	}
@@ -183,9 +183,9 @@ void updateWorld()
 	for (i = 0; i < kNumBalls; i++)
 	{
 		// YOUR CODE HERE
-		vec3 rotAxis = cross(vec3(0.0, 1.0, 0.0), ball[i].P); // P:linear momentum
-		float angle = Norm(ball[i].v);
-		ball[i].R = Mult(ArbRotate(rotAxis,angle), ball[i].R);
+//		vec3 rotAxis = cross(vec3(0.0, 1.0, 0.0), ball[i].P); // P:linear momentum
+//		float angle = Norm(ball[i].v);
+//		ball[i].R = Mult(ArbRotate(rotAxis,angle), ball[i].R);
 	}
 
 	// Control rotation here to reflect
@@ -193,6 +193,17 @@ void updateWorld()
 	for (i = 0; i < kNumBalls; i++)
 	{
 		// YOUR CODE HERE
+
+		float frictionCoeff = 0.5;
+		vec3 surface = vec3(0, -kBallSize, 0);
+		//vec3 forceNormal = (0.0, 9.82*ball[i].mass, 0.0);
+		vec3 frictionForce = (ball[i].v + CrossProduct(ball[i].omega, surface)) * frictionCoeff;
+
+		// T = r x fric
+		// F = -vel * fricF
+		ball[i].T += CrossProduct(surface, -frictionForce);
+
+		ball[i].F -= frictionForce;
 	}
 
 // Update state, follows the book closely
@@ -304,9 +315,9 @@ void init()
 	for (i = 0; i < kNumBalls; i++)
 	{
 		ball[i].mass = 1.0;
-		//ball[i].X = vec3(0.0, 0.0, 0.0);
+		ball[i].X = vec3(0.0, 0.0, 0.0);
 		//ball[i].X = vec3(0.0, 0.0, 0.0 + i*0.5);
-		ball[i].X = vec3(0.0, 0.0, i/10);
+		//ball[i].X = vec3(0.0, 0.0, i/10);
 		ball[i].P = vec3(((float)(i % 13))/ 50.0, 0.0, ((float)(i % 15))/50.0);
 		ball[i].R = IdentityMatrix();
 	}
@@ -315,15 +326,15 @@ void init()
 	ball[2].X = vec3(0.0, 0, 1.0);
 	ball[3].X = vec3(0, 0, 1.5);
 
-	ball[4].X = vec3(0.5, 0, 0);
-	ball[5].X = vec3(1.0, 0, 0.5);
-	ball[6].X = vec3(1.5, 0, 1.0);
-	ball[7].X = vec3(2.0, 0, 1.5);
+	ball[4].X = vec3(0.25, 0, 0);
+	ball[5].X = vec3(0.5, 0, 0.5);
+	ball[6].X = vec3(0.75, 0, 1.0);
+	ball[7].X = vec3(1.0, 0, 1.5);
 
-	ball[8].X = vec3(-0.5, 0, 0);
-	ball[9].X = vec3(-1.0, 0, 0.5);
-	ball[10].X = vec3(-1.5, 0, 1.0);
-	ball[11].X = vec3(-2.0, 0, 1.5);
+	ball[8].X = vec3(-0.25, 0, 0);
+	ball[9].X = vec3(-0.5, 0, 0.5);
+	ball[10].X = vec3(-0.75, 0, 1.0);
+	ball[11].X = vec3(-1.0, 0, 1.5);
 
 	ball[0].P = vec3(0, 0, 0.5);
 //	ball[1].P = vec3(0, 0, 0);
