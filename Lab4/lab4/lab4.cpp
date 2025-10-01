@@ -60,6 +60,10 @@ void SpriteBehavior() // Your code!
 
                 // Separation
                 sprites[i].avoidanceVec += CalcAvoidance(sprites[i].position, sprites[j].position);
+
+                // Alignment
+                sprites[i].speedDiff += sprites[j].speed - sprites[i].speed;
+
                 counter++;
             }
 
@@ -152,6 +156,14 @@ void Key(unsigned char key,
     	kAvoidanceWeight += 0.01;
     	printf("AvoidanceWeight = %f\n", kAvoidanceWeight);
     	break;
+    case '5':
+    	kAlignmentWeight -= 0.01;
+    	printf("AlignmentWeight = %f\n", kAlignmentWeight);
+    	break;
+    case '6':
+    	kAlignmentWeight += 0.01;
+    	printf("AlignmentWeight = %f\n", kAlignmentWeight);
+    	break;
     case 0x1b:
       exit(0);
   }
@@ -179,6 +191,7 @@ void Init()
 	sgCreateDisplayFloat(-1, -1, "Speed: ", &someValue);
 	sgCreateDisplayFloat(-1, -1, "CohesionWeight: ", &kCohesionWeight);
 	sgCreateDisplayFloat(-1, -1, "AvoidanceWeight: ", &kAvoidanceWeight);
+	sgCreateDisplayFloat(-1, -1, "AlignmentWeight: ", &kAlignmentWeight);
 
 	// Always fix the colors if it looks bad.
         sgSetFrameColor(0,0,0);
