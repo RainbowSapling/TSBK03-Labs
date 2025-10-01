@@ -44,7 +44,7 @@ TextureData *GetFace(const char *fileName)
 	return fp;
 }
 
-int NewSprite(TextureData *f, GLfloat h, GLfloat v, GLfloat hs, GLfloat vs, bool busig)
+int NewSprite(TextureData *f, GLfloat h, GLfloat v, GLfloat hs, GLfloat vs, bool busig, bool food)
 {
 	SpriteRec sp;
 
@@ -53,6 +53,7 @@ int NewSprite(TextureData *f, GLfloat h, GLfloat v, GLfloat hs, GLfloat vs, bool
 	sp.face = f;
 	sp.rotation = 0;
 	sp.busig = busig;
+	sp.food = food;
 	sprites.push_back(sp);
 	return sprites.size();
 }

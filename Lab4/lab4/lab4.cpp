@@ -44,6 +44,12 @@ void SpriteBehavior() // Your code!
     int counter;
 
     for(int i = 0; i < sprites.size(); i++) {
+
+        // Food doesn't move
+//        if(sprites[i].food == true){
+//            continue;
+//		}
+
         counter = 0;
 
         sprites[i].speedDiff = vec3(0,0,0);
@@ -52,6 +58,11 @@ void SpriteBehavior() // Your code!
 
         for(int j = 0; j < sprites.size(); j++) {
             if(i == j){
+                continue;
+            }
+
+            // Food attraction
+            if(sprites[j].food == true){
                 continue;
             }
 
@@ -91,6 +102,11 @@ void SpriteBehavior() // Your code!
 
     for(int i = 0; i < sprites.size(); i++){
 
+        // Food doesn't move
+        if(sprites[i].food == true){
+            continue;
+		}
+
         sprites[i].speed += sprites[i].speedDiff*kAlignmentWeight
                            + sprites[i].avgPos*kCohesionWeight
                            + sprites[i].avoidanceVec*kAvoidanceWeight;
@@ -117,7 +133,11 @@ void Display()
 	{
 		// Your code
 		// Example affecting sprites by a controllable parameter
-		sprites[i].speed = normalize(sprites[i].speed) * someValue;
+
+		if(sprites[i].food == false){
+            sprites[i].speed = normalize(sprites[i].speed) * someValue;
+		}
+
 
 
 		HandleSprite(&sprites[i]); // Default movement my speed. Callback in a real engine
@@ -190,12 +210,13 @@ void Init()
 	dogFace = GetFace("bilder/dog.tga"); // A dog
 	foodFace = GetFace("bilder/mat.tga"); // Food
 
-	NewSprite(sheepFace, 100, 400, 0, -1, false);
-	NewSprite(sheepFace, 100, 100, 0, 1, false);
-	NewSprite(sheepFace, 600, 400, 0, -1, false);
-	NewSprite(dogFace, 600, 200, 0, 1, false);
-	NewSprite(dogFace, 400, 300, 1, 0, false);
-	NewSprite(blackieFace, 600, 100, 1, -0.5, true);
+	NewSprite(sheepFace, 100, 400, 0, -1, false, false);
+	NewSprite(sheepFace, 100, 100, 0, 1, false, false);
+	NewSprite(sheepFace, 600, 400, 0, -1, false, false);
+	NewSprite(dogFace, 600, 200, 0, 1, false, false);
+	NewSprite(dogFace, 400, 300, 1, 0, false, false);
+	NewSprite(blackieFace, 600, 100, 1, -0.5, true, false);
+	NewSprite(foodFace, 400, 100, 0.0, 0.0, false, true);
 
 	sgCreateStaticString(20, 40, "Slider and float display");
 	sgCreateSlider(-1, -1, 200, &someValue, 0.5, 5);
