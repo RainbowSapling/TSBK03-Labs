@@ -27,6 +27,7 @@ typedef struct SpriteRec
 	vec3 speedDiff;
 	vec3 avgPos;
 	vec3 avoidanceVec;
+	bool busig;
 
 } SpriteRec, *SpritePtr;
 
@@ -38,7 +39,7 @@ extern long gWidth, gHeight;
 
 // Functions
 TextureData *GetFace(const char *fileName);
-int NewSprite(TextureData *f, GLfloat h, GLfloat v, GLfloat hs, GLfloat vs);
+int NewSprite(TextureData *f, GLfloat h, GLfloat v, GLfloat hs, GLfloat vs, bool busig);
 void HandleSprite(SpritePtr sp);
 void DrawSprite(SpritePtr sp);
 void DrawBackground();

@@ -8,6 +8,7 @@
 #include "GL_utilities.h"
 #include "VectorUtils4.h"
 #include "SimpleGUI.h"
+#include "iostream"
 // uses framework OpenGL
 // uses framework Cocoa
 
@@ -76,6 +77,14 @@ void SpriteBehavior() // Your code!
             sprites[i].avgPos = sprites[i].avgPos / counter;
             sprites[i].avoidanceVec = sprites[i].avoidanceVec / counter;
         }
+        if(sprites[i].busig == true){
+            vec3 random = vec3((((float)(rand() % 11 + 1) -6) ), (((float)(rand() % 11 + 1) -6) ), 0.0);
+            sprites[i].position += random;
+            //sprites[i].speed = vec3(1.5, 1.5, 0);
+            //std::cout << (((float)(rand() % 11 + 1) -6) /10) << "\n";
+
+        }
+
 
     }
 
@@ -109,6 +118,7 @@ void Display()
 		// Your code
 		// Example affecting sprites by a controllable parameter
 		sprites[i].speed = normalize(sprites[i].speed) * someValue;
+
 
 		HandleSprite(&sprites[i]); // Default movement my speed. Callback in a real engine
 		DrawSprite(&sprites[i]);
@@ -180,11 +190,12 @@ void Init()
 	dogFace = GetFace("bilder/dog.tga"); // A dog
 	foodFace = GetFace("bilder/mat.tga"); // Food
 
-	NewSprite(sheepFace, 100, 400, 0, -1);
-	NewSprite(sheepFace, 100, 100, 0, 1);
-	NewSprite(sheepFace, 600, 400, 0, -1);
-	NewSprite(dogFace, 600, 200, 0, 1);
-	NewSprite(dogFace, 400, 300, 1, 0);
+	NewSprite(sheepFace, 100, 400, 0, -1, false);
+	NewSprite(sheepFace, 100, 100, 0, 1, false);
+	NewSprite(sheepFace, 600, 400, 0, -1, false);
+	NewSprite(dogFace, 600, 200, 0, 1, false);
+	NewSprite(dogFace, 400, 300, 1, 0, false);
+	NewSprite(blackieFace, 600, 100, 1, -0.5, true);
 
 	sgCreateStaticString(20, 40, "Slider and float display");
 	sgCreateSlider(-1, -1, 200, &someValue, 0.5, 5);
