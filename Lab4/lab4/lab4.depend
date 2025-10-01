@@ -262,7 +262,7 @@
 
 1759209470 d:\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab4\lab4\common\windows\microglut.h
 
-1759343598 source:d:\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab4\lab4\lab4.cpp
+1759345687 source:d:\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab4\lab4\lab4.cpp
 	<stdlib.h>
 	"MicroGlut.h"
 	"LoadTGA.h"
@@ -288,7 +288,7 @@
 	<GL/gl.h>
 	"MicroGlut.h"
 
-1759343865 source:d:\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab4\lab4\lab4.depend
+1759346021 source:d:\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab4\lab4\lab4.depend
 
 1732455704 source:d:\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab4\lab4\main.c
 	<windows.h>

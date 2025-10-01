@@ -17,8 +17,22 @@
 float someValue = 1.0;
 float kAlignmentWeight = 0.1;
 float kCohesionWeight = 0.05;
-float kAvoidanceWeight = 0.1;
+float kAvoidanceWeight = 0.2;
 float kMaxDistance = 100.0;
+float kSeparationDistance = 70.0;
+
+vec3 CalcAvoidance(vec3 i_pos, vec3 j_pos) {
+    vec3 avoidVec = vec3(0,0,0);
+
+    float dist = Norm(i_pos - j_pos);
+    vec3 diff = i_pos - j_pos;
+
+    if(dist < kSeparationDistance){
+        avoidVec = ScalarMult(diff, 1-dist/kSeparationDistance);
+    }
+
+    return avoidVec;
+}
 
 void SpriteBehavior() // Your code!
 {
@@ -43,6 +57,9 @@ void SpriteBehavior() // Your code!
             if(Norm(sprites[i].position - sprites[j].position) < kMaxDistance){
                 // Cohesion
                 sprites[i].avgPos += sprites[j].position - sprites[i].position;
+
+                // Separation
+                sprites[i].avoidanceVec += CalcAvoidance(sprites[i].position, sprites[j].position);
                 counter++;
             }
 
@@ -127,6 +144,14 @@ void Key(unsigned char key,
     	kCohesionWeight += 0.01;
     	printf("CohesionWeight = %f\n", kCohesionWeight);
     	break;
+    case '3':
+    	kAvoidanceWeight -= 0.01;
+    	printf("AvoidanceWeight = %f\n", kAvoidanceWeight);
+    	break;
+    case '4':
+    	kAvoidanceWeight += 0.01;
+    	printf("AvoidanceWeight = %f\n", kAvoidanceWeight);
+    	break;
     case 0x1b:
       exit(0);
   }
@@ -147,10 +172,13 @@ void Init()
 	NewSprite(sheepFace, 100, 100, 0, 1);
 	NewSprite(sheepFace, 600, 400, 0, -1);
 	NewSprite(dogFace, 600, 200, 0, 1);
+	NewSprite(dogFace, 400, 300, 1, 0);
 
 	sgCreateStaticString(20, 40, "Slider and float display");
 	sgCreateSlider(-1, -1, 200, &someValue, 0.5, 5);
-	sgCreateDisplayFloat(-1, -1, "Value: ", &someValue);
+	sgCreateDisplayFloat(-1, -1, "Speed: ", &someValue);
+	sgCreateDisplayFloat(-1, -1, "CohesionWeight: ", &kCohesionWeight);
+	sgCreateDisplayFloat(-1, -1, "AvoidanceWeight: ", &kAvoidanceWeight);
 
 	// Always fix the colors if it looks bad.
         sgSetFrameColor(0,0,0);
