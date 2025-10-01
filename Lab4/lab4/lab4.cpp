@@ -15,11 +15,58 @@
 
 // Example of user controllable parameter
 float someValue = 1.0;
+float kAlignmentWeight = 0.1;
+float kCohesionWeight = 0.05;
+float kAvoidanceWeight = 0.1;
+float kMaxDistance = 100.0;
 
 void SpriteBehavior() // Your code!
 {
 // Add your lab code here. You may edit anywhere you want, but most of it goes here.
 // You can start from the global list gSpriteRoot.
+
+
+    int counter;
+
+    for(int i = 0; i < sprites.size(); i++) {
+        counter = 0;
+
+        sprites[i].speedDiff = vec3(0,0,0);
+        sprites[i].avgPos = vec3(0,0,0);
+        sprites[i].avoidanceVec = vec3(0,0,0);
+
+        for(int j = 0; j < sprites.size(); j++) {
+            if(i == j){
+                continue;
+            }
+
+            if(Norm(sprites[i].position - sprites[j].position) < kMaxDistance){
+                // Cohesion
+                sprites[i].avgPos += sprites[j].position - sprites[i].position;
+                counter++;
+            }
+
+
+
+        }
+
+        if(counter > 0){
+            sprites[i].speedDiff = sprites[i].speedDiff / counter;
+            sprites[i].avgPos = sprites[i].avgPos / counter;
+            sprites[i].avoidanceVec = sprites[i].avoidanceVec / counter;
+        }
+
+    }
+
+
+    for(int i = 0; i < sprites.size(); i++){
+
+        sprites[i].speed += sprites[i].speedDiff*kAlignmentWeight
+                           + sprites[i].avgPos*kCohesionWeight
+                           + sprites[i].avoidanceVec*kAvoidanceWeight;
+
+        sprites[i].position += sprites[i].speed;
+    }
 }
 
 // Drawing routine
@@ -30,18 +77,18 @@ void Display()
 	glEnable(GL_TEXTURE_2D);
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-	
+
 	DrawBackground();
 
 	SpriteBehavior(); // Your code
-	
+
 // Loop though all sprites. (Several loops in real engine.)
 	for (int i = 0; i < sprites.size(); i++)
 	{
 		// Your code
 		// Example affecting sprites by a controllable parameter
 		sprites[i].speed = normalize(sprites[i].speed) * someValue;
-		
+
 		HandleSprite(&sprites[i]); // Default movement my speed. Callback in a real engine
 		DrawSprite(&sprites[i]);
 	}
@@ -72,6 +119,14 @@ void Key(unsigned char key,
     	if (someValue > 0.5) someValue -= 0.1;
     	printf("someValue = %f\n", someValue);
     	break;
+    case '1':
+    	kCohesionWeight -= 0.01;
+    	printf("CohesionWeight = %f\n", kCohesionWeight);
+    	break;
+    case '2':
+    	kCohesionWeight += 0.01;
+    	printf("CohesionWeight = %f\n", kCohesionWeight);
+    	break;
     case 0x1b:
       exit(0);
   }
@@ -80,26 +135,27 @@ void Key(unsigned char key,
 void Init()
 {
 	TextureData *sheepFace, *blackieFace, *dogFace, *foodFace;
-	
+
 	LoadTGATextureSimple("bilder/leaves.tga", &backgroundTexID); // Background
-	
+
 	sheepFace = GetFace("bilder/sheep.tga"); // A sheep
 	blackieFace = GetFace("bilder/blackie.tga"); // A black sheep
 	dogFace = GetFace("bilder/dog.tga"); // A dog
 	foodFace = GetFace("bilder/mat.tga"); // Food
-	
-	NewSprite(sheepFace, 100, 200, 1, 1);
-	NewSprite(sheepFace, 200, 100, 1.5, -1);
-	NewSprite(sheepFace, 250, 200, -1, 1.5);
-	
+
+	NewSprite(sheepFace, 100, 400, 0, -1);
+	NewSprite(sheepFace, 100, 100, 0, 1);
+	NewSprite(sheepFace, 600, 400, 0, -1);
+	NewSprite(dogFace, 600, 200, 0, 1);
+
 	sgCreateStaticString(20, 40, "Slider and float display");
 	sgCreateSlider(-1, -1, 200, &someValue, 0.5, 5);
 	sgCreateDisplayFloat(-1, -1, "Value: ", &someValue);
-	
+
 	// Always fix the colors if it looks bad.
         sgSetFrameColor(0,0,0);
         sgSetBackgroundColor(1, 1, 1, 0.5);
-        sgSetTextColor(0, 0, 0);	
+        sgSetTextColor(0, 0, 0);
 }
 
 void mouse(int button, int state, int x, int y)
@@ -121,17 +177,17 @@ int main(int argc, char **argv)
 	glutInitWindowSize(800, 600);
 	glutInitContextVersion(3, 2);
 	glutCreateWindow("Lab 4 Flocking");
-	
+
 	glutDisplayFunc(Display);
 	glutRepeatingTimer(20); // Should match the screen synch
 	glutReshapeFunc(Reshape);
 	glutKeyboardFunc(Key);
 	glutMouseFunc(mouse);
 	glutMotionFunc(drag);
-	
+
 	InitSpriteLight();
 	Init();
-	
+
 	glutMainLoop();
 	return 0;
 }

@@ -262,7 +262,7 @@
 
 1759209470 d:\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab4\lab4\common\windows\microglut.h
 
-1759217052 source:d:\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab4\lab4\lab4.cpp
+1759343598 source:d:\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab4\lab4\lab4.cpp
 	<stdlib.h>
 	"MicroGlut.h"
 	"LoadTGA.h"
@@ -271,7 +271,7 @@
 	"VectorUtils4.h"
 	"SimpleGUI.h"
 
-1759217050 d:\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab4\lab4\spritelight2.h
+1759338427 d:\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab4\lab4\spritelight2.h
 	"LoadTGA.h"
 	"VectorUtils4.h"
 	<vector>
@@ -288,7 +288,7 @@
 	<GL/gl.h>
 	"MicroGlut.h"
 
-1759332131 source:d:\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab4\lab4\lab4.depend
+1759343865 source:d:\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab4\lab4\lab4.depend
 
 1732455704 source:d:\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab4\lab4\main.c
 	<windows.h>
@@ -319,7 +319,7 @@
 	<vector>
 	"SpriteLight2.h"
 
-1759217050 source:d:\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab4\lab4\spritelight2.h
+1759338427 source:d:\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab4\lab4\spritelight2.h
 	"LoadTGA.h"
 	"VectorUtils4.h"
 	<vector>
@@ -350,5 +350,5 @@
 
 1759216532 source:d:\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab4\lab4\obj\debug\main.o
 
-1759332252 source:d:\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab4\lab4\lab4.layout
+1759332425 source:d:\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab4\lab4\lab4.layout
 

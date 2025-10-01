@@ -22,8 +22,12 @@ typedef struct SpriteRec
 	vec3 speed;
 	GLfloat rotation;
 	struct SpriteRec *next;
-	
+
 	// Add custom sprite data here as needed
+	vec3 speedDiff;
+	vec3 avgPos;
+	vec3 avoidanceVec;
+
 } SpriteRec, *SpritePtr;
 
 // Globals: The sprite list, background texture and viewport dimensions (virtual or real pixels)
