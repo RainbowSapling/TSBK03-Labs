@@ -18,15 +18,18 @@
 float someValue = 1.0;
 float kAlignmentWeight = 0.1;
 float kCohesionWeight = 0.05;
-float kAvoidanceWeight = 0.2;
-float kMaxDistance = 100.0;
-float kSeparationDistance = 70.0;
+float kAvoidanceWeight = 10.0;
+float kMaxDistance = 150.0;
+float kSeparationDistance = 100.0;
+float foodAttraction = 0.1;
+float eatRange = 60.0;
 
 vec3 CalcAvoidance(vec3 i_pos, vec3 j_pos) {
     vec3 avoidVec = vec3(0,0,0);
 
+
     float dist = Norm(i_pos - j_pos);
-    vec3 diff = i_pos - j_pos;
+    vec3 diff = normalize(i_pos - j_pos);
 
     if(dist < kSeparationDistance){
         avoidVec = ScalarMult(diff, 1-dist/kSeparationDistance);
@@ -46,9 +49,9 @@ void SpriteBehavior() // Your code!
     for(int i = 0; i < sprites.size(); i++) {
 
         // Food doesn't move
-//        if(sprites[i].food == true){
-//            continue;
-//		}
+        if(sprites[i].food == true){
+            continue;
+		}
 
         counter = 0;
 
@@ -63,6 +66,11 @@ void SpriteBehavior() // Your code!
 
             // Food attraction
             if(sprites[j].food == true){
+                sprites[i].avgPos += (sprites[j].position - sprites[i].position) * foodAttraction;
+
+                if(Norm(sprites[j].position - sprites[i].position) < eatRange){
+                    sprites.erase(sprites.begin() + j);
+                }
                 continue;
             }
 
@@ -213,8 +221,12 @@ void Init()
 	NewSprite(sheepFace, 100, 400, 0, -1, false, false);
 	NewSprite(sheepFace, 100, 100, 0, 1, false, false);
 	NewSprite(sheepFace, 600, 400, 0, -1, false, false);
+	NewSprite(sheepFace, 200, 100, 0, -1, false, false);
+	NewSprite(sheepFace, 300, 300, 0, 1, false, false);
+	NewSprite(sheepFace, 500, 400, 0, -1, false, false);
 	NewSprite(dogFace, 600, 200, 0, 1, false, false);
 	NewSprite(dogFace, 400, 300, 1, 0, false, false);
+
 	NewSprite(blackieFace, 600, 100, 1, -0.5, true, false);
 	NewSprite(foodFace, 400, 100, 0.0, 0.0, false, true);
 
@@ -235,6 +247,12 @@ void mouse(int button, int state, int x, int y)
 {
 	sgMouse(state, x, y);
 	glutPostRedisplay();
+
+	if(button == 0 && state == 0){
+        TextureData *foodFace;
+        foodFace = GetFace("bilder/mat.tga"); // Food
+        NewSprite(foodFace, x, -y+600, 0.0, 0.0, false, true);
+	}
 }
 
 void drag(int x, int y)
