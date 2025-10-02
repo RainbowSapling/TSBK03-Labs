@@ -352,7 +352,7 @@
 
 1759332425 source:d:\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab4\lab4\lab4.layout
 
-1759359238 source:c:\users\mbspe\documents\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab4\lab4\common\gl_utilities.c
+1759411365 source:c:\users\mbspe\documents\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab4\lab4\common\gl_utilities.c
 	<Windows.h>
 	<stdlib.h>
 	<stdio.h>
@@ -360,21 +360,30 @@
 	<string.h>
 	"GL_utilities.h"
 
-1759359238 c:\users\mbspe\documents\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab4\lab4\common\gl_utilities.h
+1759411365 c:\users\mbspe\documents\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab4\lab4\common\gl_utilities.h
 	<OpenGL/gl3.h>
 	"glew.h"
 	<GL/gl.h>
 	<GL/gl.h>
 	<stdlib.h>
 
-1759359238 source:c:\users\mbspe\documents\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab4\lab4\common\gl_utilities.h
+1759209470 c:\users\mbspe\documents\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab4\lab4\common\windows\glew.h
+	<stddef.h>
+	<inttypes.h>
+	<stdint.h>
+	<inttypes.h>
+	<Availability.h>
+	<OpenGL/glu.h>
+	<GL/glu.h>
+
+1759411365 source:c:\users\mbspe\documents\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab4\lab4\common\gl_utilities.h
 	<OpenGL/gl3.h>
 	"glew.h"
 	<GL/gl.h>
 	<GL/gl.h>
 	<stdlib.h>
 
-1759359238 source:c:\users\mbspe\documents\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab4\lab4\common\littleobjloader.h
+1759411365 source:c:\users\mbspe\documents\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab4\lab4\common\littleobjloader.h
 	<OpenGL/gl3.h>
 	"glew.h"
 	<GL/gl.h>
@@ -385,17 +394,17 @@
 	<math.h>
 	"VectorUtils4.h"
 
-1759359239 c:\users\mbspe\documents\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab4\lab4\common\vectorutils4.h
+1759411365 c:\users\mbspe\documents\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab4\lab4\common\vectorutils4.h
 	<OpenGL/gl3.h>
 	"glew.h"
 	<GL/gl.h>
 	<math.h>
 	<stdio.h>
 
-1759359239 source:c:\users\mbspe\documents\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab4\lab4\common\loadtga.c
+1759411365 source:c:\users\mbspe\documents\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab4\lab4\common\loadtga.c
 	"LoadTGA.h"
 
-1759359239 c:\users\mbspe\documents\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab4\lab4\common\loadtga.h
+1759411365 c:\users\mbspe\documents\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab4\lab4\common\loadtga.h
 	<OpenGL/gl3.h>
 	"glew.h"
 	<GL/gl.h>
@@ -403,7 +412,7 @@
 	<stdlib.h>
 	<string.h>
 
-1759359239 source:c:\users\mbspe\documents\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab4\lab4\common\loadtga.h
+1759411365 source:c:\users\mbspe\documents\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab4\lab4\common\loadtga.h
 	<OpenGL/gl3.h>
 	"glew.h"
 	<GL/gl.h>
@@ -411,14 +420,14 @@
 	<stdlib.h>
 	<string.h>
 
-1759359239 source:c:\users\mbspe\documents\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab4\lab4\common\vectorutils4.h
+1759411365 source:c:\users\mbspe\documents\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab4\lab4\common\vectorutils4.h
 	<OpenGL/gl3.h>
 	"glew.h"
 	<GL/gl.h>
 	<math.h>
 	<stdio.h>
 
-1759359239 source:c:\users\mbspe\documents\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab4\lab4\common\windows\glew.c
+1759209470 source:c:\users\mbspe\documents\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab4\lab4\common\windows\glew.c
 	"glew.h"
 	"wglew.h"
 	<GL/glxew.h>
@@ -432,19 +441,10 @@
 	<dlfcn.h>
 	<mach-o/dyld.h>
 
-1759359239 c:\users\mbspe\documents\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab4\lab4\common\windows\glew.h
-	<stddef.h>
-	<inttypes.h>
-	<stdint.h>
-	<inttypes.h>
-	<Availability.h>
-	<OpenGL/glu.h>
-	<GL/glu.h>
-
-1759359239 c:\users\mbspe\documents\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab4\lab4\common\windows\wglew.h
+1759209470 c:\users\mbspe\documents\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab4\lab4\common\windows\wglew.h
 	<windows.h>
 
-1759359239 source:c:\users\mbspe\documents\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab4\lab4\common\windows\microglut.c
+1759411366 source:c:\users\mbspe\documents\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab4\lab4\common\windows\microglut.c
 	<windows.h>
 	"glew.h"
 	<gl/gl.h>
@@ -453,9 +453,9 @@
 	<io.h>
 	<fcntl.h>
 
-1759359239 c:\users\mbspe\documents\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab4\lab4\common\windows\microglut.h
+1759411366 c:\users\mbspe\documents\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab4\lab4\common\windows\microglut.h
 
-1759407353 source:c:\users\mbspe\documents\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab4\lab4\lab4.cpp
+1759416416 source:c:\users\mbspe\documents\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab4\lab4\lab4.cpp
 	<stdlib.h>
 	"MicroGlut.h"
 	"LoadTGA.h"
@@ -465,21 +465,19 @@
 	"SimpleGUI.h"
 	"iostream"
 
-1759407353 c:\users\mbspe\documents\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab4\lab4\spritelight2.h
+1759411583 c:\users\mbspe\documents\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab4\lab4\spritelight2.h
 	"LoadTGA.h"
 	"VectorUtils4.h"
 	<vector>
 
-1759359238 c:\users\mbspe\documents\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab4\lab4\simplegui.h
+1759411366 c:\users\mbspe\documents\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab4\lab4\simplegui.h
 	<OpenGL/gl3.h>
 	<GL/gl.h>
 	"MicroGlut.h"
 
-1759407353 source:c:\users\mbspe\documents\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab4\lab4\lab4.depend
+1759411580 source:c:\users\mbspe\documents\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab4\lab4\lab4.layout
 
-1759407353 source:c:\users\mbspe\documents\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab4\lab4\lab4.layout
-
-1759359238 source:c:\users\mbspe\documents\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab4\lab4\simplegui.c
+1759411366 source:c:\users\mbspe\documents\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab4\lab4\simplegui.c
 	<stdlib.h>
 	<stdio.h>
 	<math.h>
@@ -487,16 +485,16 @@
 	"GL_utilities.h"
 	"SimpleGUI.h"
 
-1759359238 source:c:\users\mbspe\documents\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab4\lab4\simplegui.h
+1759411366 source:c:\users\mbspe\documents\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab4\lab4\simplegui.h
 	<OpenGL/gl3.h>
 	<GL/gl.h>
 	"MicroGlut.h"
 
-1759359238 source:c:\users\mbspe\documents\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab4\lab4\spritelight.h
+1759411366 source:c:\users\mbspe\documents\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab4\lab4\spritelight.h
 	"LoadTGA.h"
 	"VectorUtils4.h"
 
-1759407353 source:c:\users\mbspe\documents\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab4\lab4\spritelight2.cpp
+1759411583 source:c:\users\mbspe\documents\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab4\lab4\spritelight2.cpp
 	"LoadTGA.h"
 	<math.h>
 	"VectorUtils4.h"
@@ -504,8 +502,10 @@
 	<vector>
 	"SpriteLight2.h"
 
-1759407353 source:c:\users\mbspe\documents\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab4\lab4\spritelight2.h
+1759411583 source:c:\users\mbspe\documents\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab4\lab4\spritelight2.h
 	"LoadTGA.h"
 	"VectorUtils4.h"
 	<vector>
+
+1759416889 source:c:\users\mbspe\documents\tsbk03 - teknik för avancerade datorspel\tsbk03-labs\lab4\lab4\lab4.depend
 
